@@ -1,52 +1,30 @@
-//Dessa är alla variabler du behöver använda. 
-//De ska dock ligga i olika funktioner och inte nedanför.
-
-const tip;
-const sum;
-const numberOfFriends;
-const total;
-const friendSum;
-const sumDivided;
-const calculatedTip;
-const total;
-
-//Hämtar det som skrivits i inputfältet med ID tip
-document.getElementById('tip').value;
-
-function calculateTip(sum, tip) {}
-
-document.getElementById('calculateButton').addEventListener('click', function() {});
-
-//Hämtar det som skrivits i inputfältet med ID sum
-document.getElementById('sum').value;
-
-calculateTip(sum, tip);
-
-sum + calculatedTip;
-
-function divideTotal(total, numberOfFriends) {}
-
-document.getElementById('friendSum').innerHTML = sum + ' kr';
-
-//Returnerar värdet i variablen sumDivided i en funktion
-return sumDivided;
-
-showDividedSum(friendSum);
-
-document.getElementById('showSum').classList.toggle('hide');
-
-total / numberOfFriends;
-
-function showDividedSum(sum) {}
-
-document.getElementById('inputForm').classList.toggle('hide');
-
-sum * tip;
-
-//Returnerar värdet i variablen total i en funktion
-return total;
-
-divideTotal(total, numberOfFriends);
-
-//Hämtar det som skrivits i inputfältet med ID numberOfFriends
-document.getElementById('numberOfFriends').value;
+const tipInput = document.getElementById("tip");
+const sumInput = document.getElementById("sum");
+const numberOfFriendsInput = document.getElementById("numberOfFriends");
+let numberOfFriends;
+let total;
+let sumDivided;
+function calculateTip(sum, tip) {
+    const calculatedTip = sum * tip;
+    total = calculatedTip + sum;
+    return total;
+}
+/* console.log(calculateTip(100,10)); */
+document.getElementById('calculateButton').addEventListener('click', function () {
+    divideTotal(total, numberOfFriends);
+    console.log(divideTotal(total, numberOfFriends));
+    showDividedSum(sumDivided);
+});
+function divideTotal(total, numberOfFriends) {
+    const tip = parseFloat(tipInput.value);
+    const sum = parseFloat(sumInput.value);
+    numberOfFriends = parseFloat(numberOfFriendsInput.value);
+    sumDivided = calculateTip(sum, tip) / numberOfFriends;
+    return sumDivided;
+}
+function showDividedSum(result) {
+    const friendSum = document.getElementById("friendSum");
+    friendSum.innerText = `Varje person ska betala : ${result} `;
+    document.getElementById('showSum').classList.toggle('hide');
+    document.getElementById('inputForm').classList.toggle('hide');
+}
